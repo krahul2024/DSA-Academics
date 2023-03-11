@@ -33,14 +33,9 @@ int main(){
         min_index--;
     }
     if(min_index<0){
-        cout<<0<<'\n';
-        return 0;
+        cout<<0<<'\n'; return 0;
     }
-    for(int i=1;i<=min_index;i++){
-        second=a[i];
-        ans+=(first^second);
-        first=second;
-    }
+    for(int i=1;i<=min_index;i++) second=a[i], ans+=(first^second),first=second;
     cout<<ans<<'\n';
 }
 
