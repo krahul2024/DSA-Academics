@@ -1,0 +1,214 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "mount_file_id": "1IXvJFp85VZ4BijKSs-EwKqhpA4pLAW9R",
+      "authorship_tag": "ABX9TyMrrDSrj3U0aGqACChu7vJC",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/krahul2024/dsa-acad/blob/usacoCodes/dm/codes/train-and-test.ipnyb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 10,
+      "metadata": {
+        "id": "QIlTWEO0mh3Q"
+      },
+      "outputs": [],
+      "source": [
+        "import tensorflow as tf\n",
+        "import pandas as pd \n",
+        "from sklearn.preprocessing import MinMaxScaler\n",
+        "import math \n",
+        "import numpy as np   \n",
+        "from sklearn import metrics , svm\n",
+        "from sklearn.linear_model import LinearRegression\n",
+        "from sklearn.tree import DecisionTreeClassifier\n",
+        "from sklearn.model_selection import train_test_split "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#@title Old-processing\n",
+        "def entropy_column(value):\n",
+        "\tlst = list(value)\n",
+        "\tdictionary = dict() #creating a dictionary for storing key values and pairs \n",
+        "\tfor i in  range(len(lst)):\n",
+        "\t\tdictionary[lst[i]] = [0,0] # initializing dictionary as first element is count and second is entropy for respective key\n",
+        "\n",
+        "\t# updating counts of each element \n",
+        "\tfor i in range(len(lst)):\n",
+        "\t\ttemp = dictionary[lst[i]] \n",
+        "\t\ttemp[0] = temp[0] + 1 \n",
+        "\t\tdictionary[lst[i]] = temp \n",
+        "\n",
+        "\t# calculating entropy for each element using the formula plogp\n",
+        "\tfor val in dictionary:\n",
+        "\t\tprob = dictionary[val][0]/150  \n",
+        "\t\tprob = prob*(math.log2(prob))\n",
+        "\t\tdictionary[val][1] = prob\n",
+        "\n",
+        "\t# for item in dictionary:\n",
+        "\t# \tprint('value:',item,',Count:',dictionary[item][0],'Entropy:',dictionary[item][1],'\\n') \n",
+        "\n",
+        "\treturn dictionary  # returning dictionary which has labels and entropy for each of the label \n",
+        "\t\n",
+        "\n",
+        "\n",
+        "from google.colab import files\n",
+        "# this is for reading from github as this makes file import easier and reduces pain of uploading file again and again in below case\n",
+        "file_url = \"https://raw.githubusercontent.com/krahul2024/random_repo/usacoCodes/dm/datasets/iris.csv\"\n",
+        "df = pd.read_csv(file_url) \n",
+        "\n",
+        "# while using this method we will have to upload file every time we will run this code segment\n",
+        "# uploaded = files.upload()\n",
+        "# df=pd.read_csv(r'iris.csv')\n",
+        "# print(df.shape) #this prints shape of the dataset in terms of rows and columns \n",
+        "\n",
+        "#inputs \n",
+        "label = df[\"Species\"] \n",
+        "df.drop(\"Species\" , axis = 1 , inplace = True)  \n",
+        "df.drop(\"Id\",axis=1,inplace=True) \n",
+        "# print(df.shape)\n",
+        "\n",
+        "# print(label.value_counts)  \n",
+        "#label.value_counts().plot(kind=bar) \n",
+        "features = set(df.columns) \n",
+        "# print(features) \n",
+        "scaler = MinMaxScaler() \n",
+        "df_norm = df.copy() \n",
+        "df_norm[list(features)] = scaler.fit_transform(df[list(features)])\n",
+        "#find entropy of labels or the flower species types \n",
+        "\n",
+        "list_of_labels = list(features) \n",
+        "\n",
+        "print('value , count , entropy For Label \\n',entropy_column(label),'\\n')\n",
+        "for i in range(len(list_of_labels)):\n",
+        "  print('value , count , entropy for each of unique values')\n",
+        "  print('For ', list_of_labels[i], '\\n',entropy_column(df[list_of_labels[i]]),'\\n')\n",
+        "  \n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "1pld7_lzmlOd",
+        "cellView": "form"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#@title New-Processing\n",
+        "file_url = \"https://raw.githubusercontent.com/krahul2024/random_repo/usacoCodes/dm/datasets/iris.csv\"\n",
+        "flower_data = pd.read_csv(file_url) \n",
+        "# printing the dataframe \n",
+        "flower_data.describe() # this is for getting all the details about this dataset \n",
+        "\n"
+      ],
+      "metadata": {
+        "cellView": "form",
+        "id": "bkozOHkWZlI5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "HKlOTX5caSy6"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "flower_data.describe()\n",
+        "\n",
+        " # this is for splitting the dataset in 25% and 75% parts for testing and training respectively\n",
+        "train , test = train_test_split(flower_data , test_size = 0.25)\n",
+        "# test.describe()\n",
+        "\n",
+        "# Species is label and rest are features of this dataset \n",
+        "\n",
+        "# getting all the features from training dataset except label  in train_x \n",
+        "train_x = train[['SepalWidthCm' , 'SepalLengthCm' , 'PetalLengthCm' , 'PetalWidthCm']]\n",
+        "train_y = train['Species']\n",
+        "# train_x.describe()\n",
+        "\n",
+        "# getting all the features from test dataset except the label\n",
+        "test_x = test[['SepalWidthCm' , 'SepalLengthCm' , 'PetalLengthCm' , 'PetalWidthCm']]\n",
+        "test_y = test['Species']\n",
+        "\n",
+        "# Creating a model to train the training dataset \n",
+        "model = svm.SVC() \n",
+        "model.fit(train_x , train_y) \n",
+        "prediction = model.predict(test_x)\n",
+        "first_accuray = metrics.accuracy_score(prediction , test_y )\n",
+        "\n",
+        "\n",
+        "#  Now using the Decision trees\n",
+        "model = DecisionTreeClassifier()\n",
+        "model.fit(train_x , train_y) \n",
+        "prediction_dt = model.predict(test_x) \n",
+        "second_accuracy = metrics.accuracy_score(prediction_dt , test_y) \n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dLvAGcpAZy5X",
+        "outputId": "17cb2aa9-eef9-4dfe-944c-7dd44e0cc7a9"
+      },
+      "execution_count": 49,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.868421052631579"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 49
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from sklearn.preprocessing import StandardScaler \n",
+        "scaler = StandardScaler() \n",
+        "scaler.fit(train_)"
+      ],
+      "metadata": {
+        "id": "KX0Ml7QZcRng"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
