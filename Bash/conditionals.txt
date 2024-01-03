@@ -1,0 +1,81 @@
+Using conditional statements 
+
+if [[ condition ]];
+then 
+    statement 
+elif [[ condition ]];
+then 
+    statement 
+else 
+    do statement 
+fi 
+
+Mapping of conditional operators from c to bash 
+c ---> bash 
+==     == 
+<      -lt 
+>       -gt 
+>=      -ge
+<=       -le 
+AND      && 
+OR       || 
+XOR not available in bash so have to do something like this 
+if [[($condition1 && ! $condition2) || (! $condtion1 && $condition2)]]
+
+
+#  using conditional statements two ways to write 
+echo "Enter a number" 
+read number 
+# if [[ $number -gt 9 ]]; then 
+#   echo "Number entered is not less than 10" 
+# elif [[ $number -lt 0 ]]; then 
+#   echo "Number entered is less than 10 but it is greater than 0"
+# else echo "Number entered is Zero"
+# fi
+
+if ((number >= 10)); then 
+    echo -e "Number is not less than 10\n";  
+elif ((number <= 5)); then 
+    echo -e "Number is not less than 10 and greater than 4\n"
+else echo -e "Number is less than 5\n" 
+fi 
+
+
+# checking if a number is odd/even
+if ((number%2 == 1)); then 
+    echo "The number is odd."
+else echo "The number is even."
+fi
+
+# number1=5
+# number2=2
+
+# bitwise_and=$(($number1 & $number2))
+# echo "Bitwise AND: $bitwise_and"
+
+
+if (($(($number & 1)))); then 
+    echo "odd number"
+else echo "even number" 
+fi
+
+There are various types of comparisons in bash 
+
+1.Arithmetic comparisons 
+== , != , < , > , >= , <=   ---> symbols having their usual meaning 
+
+2.String comparisons 
+= for equal , != for not equal , -z for empy string , -n for non-empty string 
+
+3.File comparisons 
+-e , if file exists 
+-f , if file exists and is a regular file 
+-d , file exists and is a directory 
+-r , file is readable 
+-w , file is writable 
+-x , file is executable 
+
+4.Logical comparisons 
+&& , logical AND 
+|| , logical OR 
+

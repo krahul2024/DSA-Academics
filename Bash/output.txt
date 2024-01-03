@@ -1,0 +1,10 @@
+This file contains name entered in the command line	Rahul
+
+This is appended text and contains the name entered in command line	Rahul
+file.txt
+first.sh
+notes_one.txt
+note_to_self.txt
+output.txt
+second.sh
+third.sh

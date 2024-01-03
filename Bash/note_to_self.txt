@@ -1,0 +1,88 @@
+Things to learn in bash scripting.
+1. Variables and Data Types:
+   - Variable declaration and assignment
+   - Variable scope and environment variables
+   - String manipulation
+   - Numeric operations
+
+2. Control Flow:
+   - Conditional statements (if/else, case)
+   - Looping constructs (for, while, until)
+   - Exit status and error handling (return codes, exit command)
+
+3. Input and Output:
+   - Standard input, output, and error (stdin, stdout, stderr)
+   - Command substitution (`$(command)`)
+   - Redirection (>, >>, <, 2>, etc.)
+   - Pipes (|)
+
+4. Functions:
+   - Defining and calling functions
+   - Passing arguments to functions
+   - Returning values from functions
+   - Recursive functions
+
+5. Command-Line Arguments and Options:
+   - Accessing command-line arguments (`$1`, `$2`, etc.)
+   - Parsing options with getopts
+
+6. Arrays:
+   - Declaring and initializing arrays
+   - Accessing and modifying array elements
+   - Array manipulation and iteration
+
+7. File Operations:
+   - Reading from and writing to files
+   - File and directory manipulation (creation, deletion, renaming, permissions)
+   - File testing and conditional file operations
+
+8. String Manipulation and Regular Expressions:
+   - String concatenation and splitting
+   - Pattern matching and regular expressions (grep, sed, awk)
+   - String manipulation functions (substring extraction, string length, etc.)
+
+9. Process Management:
+   - Running and controlling processes
+   - Process monitoring and management
+   - Background and foreground processes
+
+10. Advanced Topics:
+    - Signal handling
+    - Debugging and tracing
+    - Advanced scripting techniques (functions as arguments, variable indirection, etc.)
+    - Script optimization and best practices
+
+
+Projects on bash scripting.
+
+1. System Monitoring Script:
+   Develop a script that collects and displays important system information, such as CPU usage, memory usage, disk space, network statistics, and process monitoring. The script can periodically run and provide real-time insights into system performance.
+
+2. Backup Automation:
+   Create a script that automates the backup of important files or directories. It can compress and archive files, create timestamped backups, and optionally upload them to a remote server or cloud storage.
+
+3. Log Analysis Tool:
+   Build a script that analyzes log files (e.g., web server logs, system logs) and generates reports or alerts based on specific patterns or conditions. This can help identify errors, anomalies, or security incidents.
+
+4. File Renamer:
+   Develop a script that renames files in a directory based on specific rules or patterns. For example, you can create a script that renames image files by appending timestamps or modifying file extensions.
+
+5. Deployment Script:
+   Create a script that automates the deployment of a web application or software package. It can pull the latest code from a version control system, install dependencies, configure the environment, and start the application.
+
+6. Task Scheduler:
+   Build a script that allows users to schedule and automate recurring tasks or jobs. The script can utilize cron or a similar scheduling mechanism to execute tasks at specified times or intervals.
+
+7. Server Provisioning:
+   Develop a script that automates the provisioning and configuration of servers. It can install necessary packages, configure network settings, set up users and permissions, and perform other server administration tasks.
+
+8. Website Availability Checker:
+   Create a script that periodically checks the availability of websites or web services. It can send notifications or generate reports when a website is down or experiences issues.
+
+9. Password Manager:
+   Build a script that securely manages passwords. It can generate strong passwords, encrypt and store them, and provide a convenient way to retrieve passwords when needed.
+
+10. System Health Check:
+    Develop a script that performs a comprehensive health check of a system. It can check disk usage, CPU load, memory usage, network connectivity, and other system parameters, generating a detailed report or alerting on potential issues.
+
+

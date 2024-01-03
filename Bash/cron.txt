@@ -1,0 +1,17 @@
+Cron is a time-based job scheduling utility in Unix-like operating systems. It allows users to schedule and automate the execution of commands or scripts at specific intervals or predetermined times. Cron jobs are defined in a crontab (cron table) file, which contains the schedule and the command to be executed.
+
+cron job example 
+* * * * * sh /path/to/script.sh
+
+The five asterisks (*) represent the time and date fields that define the schedule for the cron job. Each asterisk corresponds to a specific time unit:
+
+Minute: The first asterisk represents the minute field. In this example, it is set to "*", which means the cron job will run every minute of every hour.
+
+Hour: The second asterisk represents the hour field. It is also set to "*", indicating that the cron job will run every hour.
+
+Day of the month: The third asterisk represents the day of the month field. Again, it is set to "*", so the cron job will run on every day of the month.
+
+Month: The fourth asterisk represents the month field. Similarly, it is set to "*", resulting in the cron job running every month.
+
+Day of the week: The fifth asterisk represents the day of the week field. Once again, it is set to "*", indicating that the cron job will run on every day of the week.
+

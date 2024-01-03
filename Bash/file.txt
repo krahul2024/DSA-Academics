@@ -1,0 +1,7 @@
+file.txt
+first.sh
+notes_one.txt
+note_to_self.txt
+output.txt
+second.sh
+third.sh

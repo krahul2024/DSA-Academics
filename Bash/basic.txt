@@ -1,0 +1,60 @@
+To see list of types of shells which our system supports we can see using command $ cat /etc/shells
+
+To know where bash is located $ which bash 
+
+for creating a script file we can either name it filename.sh or filename both are fine. 
+
+$ ls -al command gives list of all the files along with all the file details like permissions , size modification date and a lot more, read in details about it.
+
+files created with touch have only read and write permission , so whenever we create a file which needs to be executed, for example if we create shell script files using touch command then when we will execute the file we won't be able to execute it as we didn't have permission to run it.
+
+Giving permission to run a file  $ chmod +x filename.extension 
+
+bash scripts start with a "shebang", shebang is combination of bash # and bang ! followed by bash shell path /usr/bin/bash
+something like this --> #! /usr/bin/bash 
+
+Find bash shell path using $ which bash 
+
+Using echo -e "\n This is some string"
+-e enables usage of \n and \t and others as literal characters. 
+\b is for backspace , \t for tab , \n for newline , \v for vertical tab , \a for alert sound , \\ for literal backslash
+
+Variables and Data types: 
+No data types in bash . 
+variable=value  # remember to there shouldn't be spaces between variable name equal sign and values of the variable . 
+
+To access the variable 
+use $variable 
+like => echo $variable  # prints the variable value 
+
+
+Reading from a file 
+
+while read line
+do  
+    echo $line 
+ done < input.txt 
+ 
+ Reading from a file and printing lines 
+ 
+cd: Change the directory to a different location.
+ls: List the contents of the current directory.
+mkdir: Create a new directory.
+touch: Create a new file with read/write accesses only
+rm: Remove a file or directory.
+cp: Copy a file or directory.
+mv: Move or rename a file or directory.
+echo: Print text to the terminal.
+cat: Concatenate and print the contents of a file.
+grep: Search for a pattern in a file.
+chmod: Change the permissions of a file or directory.
+sudo: Run a command with administrative privileges.
+df: Display the amount of disk space available.
+history: Show a list of previously executed commands.
+ps: Display information about running processes.
+
+
+To add acces by user or current owner 
+$ chmod u+x file.sh
+
+
