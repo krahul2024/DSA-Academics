@@ -1,4 +1,5 @@
 * Count of Subarrays with sum = k 
+
 ```python
     
     # handles only positive values 
@@ -22,6 +23,7 @@
 ```
 
 * Count of Subarrays divisible by k 
+
 ```python
     sum_, count = 0, {0 : 1} 
     for x in arr : 
@@ -32,6 +34,7 @@
 ```
 
 * Longest subarray with unique elements*
+
 
 ```c++
     // time complexity is nlogn
@@ -58,6 +61,7 @@
 ```
 
 * Length of the longest subarray with sum k 
+
 ```python
     
         sum, ans, m = 0, [-1, -2], {}
@@ -76,6 +80,7 @@
 ```
 
 * Largest subarray with equal no. of 0s and 1s
+
 *The approach is similar to above problem, we just have to replace all the 0s with -1 and find the largest subarray with 0 sum.*
 ```py
 
@@ -95,9 +100,11 @@
     return ans 
 ```
 * Largest product of two elements in an array 
+
 *Approach is to get two most mins and two most maxes and then compare their products and return those(best approach), a bit naive approach is to sort and compare the product, most naive approach is to calculate product of all pairs and then compare them*
 
 * Counting Rooms
+
 *Approach for this problem is to start with one index and mark all the reachable indexes as unreachable and count all of this as a single room, then look for next room and continue doing this*
 ```cpp
     /*
@@ -116,6 +123,7 @@
 
 ```
 * Labyrinth 
+
 *This is a basic path finding problem using bfs, given source and destination, we have to find the path from source to destination(if exists) else output No, can be solved using basic bfs algorithm*
 ```cpp
     
