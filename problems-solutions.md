@@ -156,8 +156,8 @@
             temp = parent[x][y]; 
             int x1 = temp.first, y1 = temp.second, xdiff = x-x1, ydiff = y-y1; 
             if(x1 == -1) break; 
-            if(xdiff != 0) path += (xdiff == 1 ? 'U' : 'D'); 
-            else if(ydiff != 0) path += (ydiff == 1 ? 'L' : 'R'); 
+            if(xdiff != 0) path += (xdiff == 1 ? 'D' : 'U'); 
+            else if(ydiff != 0) path += (ydiff == 1 ? 'R' : 'L'); 
         }
         reverse(begin(path), end(path)); 
         cout<<"YES\n"<<path.size()<<'\n'<<path<<'\n'; 
